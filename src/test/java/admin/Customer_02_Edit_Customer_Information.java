@@ -16,6 +16,7 @@ import pageObject.admin.AdminCustomerPageObject;
 import pageObject.admin.AdminDashboardPageObject;
 import pageObject.admin.AdminLoginPageObject;
 import pageObject.admin.PageGeneratorManager;
+import utilities.DataHelper;
 
 @Epic("Regrestion Test")
 @Feature("Edit Customer")
@@ -27,6 +28,7 @@ public class Customer_02_Edit_Customer_Information extends BaseTest{
 	private static String adminEmail, adminPassword;
 	private String firstName, lastName, email, password, dateOfBirth, companyName, customerRole, adminComment;
 	private String firstNameEdit, lastNameEdit, emailEdit, dateOfBirthEdit, companyNameEdit, adminCommentEdit;
+	DataHelper datahelper;
 	
 	@Parameters({"browser", "servername"})
 	@BeforeClass
@@ -34,9 +36,10 @@ public class Customer_02_Edit_Customer_Information extends BaseTest{
 		driver = createBrowserDriver(browserName, serverName);
 		adminEmail = "admin@yourstore.com";
 		adminPassword = "admin";
-		firstName = "Elon";
-		lastName = "Musk";
-		email = "elonmusk" + getRandomNumber() + "@gmail.com";
+		firstName = datahelper.getFirstName();
+		lastName = datahelper.getLastName();
+		
+		email = datahelper.getEmailAddress();
 		password = "Abc13579";
 		dateOfBirth = "12/29/2021";
 		companyName = "Automation Group";
