@@ -7,11 +7,17 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import common.BaseTest;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import pageObject.user.PageGeneratorManager;
 import pageObject.user.UserHomePageObject;
 import pageObject.user.UserLoginPageObject;
 import pageObject.user.UserRegisterPageObject;
-
+@Epic("Regrestion Test")
+@Feature("Login for User")
 public class Topic_02_Login extends BaseTest {
 	WebDriver driver;
 	UserHomePageObject homePage;
@@ -53,6 +59,8 @@ public class Topic_02_Login extends BaseTest {
 		homePage = registerPage.clickToContinueButton();
 	}
 
+	@Description("Login with empty data")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Login_01_Empty_Data() {
 		log.info("Login 01 - Step 1: Click to Login link");
@@ -65,6 +73,8 @@ public class Topic_02_Login extends BaseTest {
 		verifyEquals(loginPage.getErrorMessageOfTextboxByID(driver, "Email-error"), "Please enter your email");
 	}
 
+	@Description("Login with invalid email")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Login_02_Invalid_Email() {
 		homePage.openLoginPage();
@@ -83,6 +93,8 @@ public class Topic_02_Login extends BaseTest {
 		
 	}
 	
+	@Description("Login with email not register")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Login_03_Email_Not_Register() {
 		homePage.openLoginPage();
@@ -101,6 +113,8 @@ public class Topic_02_Login extends BaseTest {
 		verifyEquals(loginPage.getEmailNotFoundMessage(), "Login was unsuccessful. Please correct the errors and try again.\nNo customer account found");
 	}
 	
+	@Description("Login with correct email and no passsword")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Login_04_Correct_Email_And_No_Password() {
 		homePage.openLoginPage();
@@ -118,6 +132,8 @@ public class Topic_02_Login extends BaseTest {
 		verifyEquals(loginPage.getEmailNotFoundMessage(), "Login was unsuccessful. Please correct the errors and try again.\nThe credentials provided are incorrect");
 	}
 	
+	@Description("Login with correct email and incorrect password")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Login_05_Correct_Email_And_Incorrect_Password() {
 		homePage.openLoginPage();
@@ -137,6 +153,8 @@ public class Topic_02_Login extends BaseTest {
 		verifyEquals(loginPage.getEmailNotFoundMessage(), "Login was unsuccessful. Please correct the errors and try again.\nThe credentials provided are incorrect");
 	}
 	
+	@Description("Login with correct email and correct password")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Login_06_Correct_Email_And_Correct_Password() {
 		homePage.openLoginPage();

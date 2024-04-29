@@ -7,11 +7,18 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import common.BaseTest;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import pageObject.admin.AdminCustomerPageObject;
 import pageObject.admin.AdminDashboardPageObject;
 import pageObject.admin.AdminLoginPageObject;
 import pageObject.admin.PageGeneratorManager;
 
+@Epic("Regrestion Test")
+@Feature("Register And Search")
 public class Customer_01_Register_And_Search extends BaseTest{
 	private static WebDriver driver;
 	private AdminLoginPageObject loginPage;
@@ -45,6 +52,8 @@ public class Customer_01_Register_And_Search extends BaseTest{
 		verifyTrue(dashboardPage.isDashboardHeaderDisplayed());
 	}
 	
+	@Description("Create new customer")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Customer_01_Create_New_Customer() {
 		log.info("Product 01 - Step 1: Click to Customers menu");
@@ -109,6 +118,8 @@ public class Customer_01_Register_And_Search extends BaseTest{
 		verifyTrue(customerPage.isCustomerInformationDisplayWithEmailAndName("Guest", firstName + " " + lastName));
 	}
 	
+	@Description("Search Customer with Email")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Customer_02_Search_Customer_With_Email() {
 		log.info("Product 02 - Step 1: Search customer with email");
@@ -126,6 +137,8 @@ public class Customer_01_Register_And_Search extends BaseTest{
 		verifyTrue(customerPage.isCustomerInformationDisplayWithEmailAndName("Guest", firstName + " " + lastName));
 	}
 	
+	@Description("Search Customer With Firstname and LastName")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Customer_03_Search_Customer_With_FirstName_And_LastName() {
 		log.info("Product 03 - Step 1: Search customer with first name and last name");
@@ -144,6 +157,8 @@ public class Customer_01_Register_And_Search extends BaseTest{
 		verifyTrue(customerPage.isCustomerInformationDisplayWithEmailAndName("Guest", firstName + " " + lastName));
 	}
 	
+	@Description("Search Customer with Company")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Customer_04_Search_Customer_With_Company() {
 		log.info("Product 04 - Step 1: Search customer with company");
@@ -161,6 +176,8 @@ public class Customer_01_Register_And_Search extends BaseTest{
 		verifyTrue(customerPage.isCustomerInformationDisplayWithEmailAndName("Guest", firstName + " " + lastName));
 	}
 	
+	@Description("Search Customer with full data")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Customer_05_Search_Customer_With_FullData() {
 		log.info("Product 05 - Step 1: Search customer with company");
@@ -182,7 +199,6 @@ public class Customer_01_Register_And_Search extends BaseTest{
 		verifyEquals(customerPage.getCustomerNumber(), "1");
 		verifyTrue(customerPage.isCustomerInformationDisplayWithEmailAndName("Guest", firstName + " " + lastName));
 	}
-	
 
 	@AfterClass
 	public void afterClass() {

@@ -7,11 +7,18 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import common.BaseTest;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import pageObject.admin.AdminCustomerPageObject;
 import pageObject.admin.AdminDashboardPageObject;
 import pageObject.admin.AdminLoginPageObject;
 import pageObject.admin.PageGeneratorManager;
 
+@Epic("Regrestion Test")
+@Feature("Add and Edit address")
 public class Customer_03_Add_And_Edit_Address extends BaseTest{
 	private static WebDriver driver;
 	private AdminLoginPageObject loginPage;
@@ -117,8 +124,9 @@ public class Customer_03_Add_And_Edit_Address extends BaseTest{
 		customerPage.clickButtonLinkByLabelInAdminPage(driver, "back to customer list");
 		verifyTrue(customerPage.isPageLoadedSuccess(driver));
 	}
-	
-	
+
+	@Description("Add address")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Customer_01_Add_Address() {
 		log.info("Customer 01 - Step 1: Search customer with company");
@@ -193,6 +201,8 @@ public class Customer_03_Add_And_Edit_Address extends BaseTest{
 
 	}
 	
+	@Description("Edit address")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Customer_02_Edit_Address() {
 		log.info("Customer 02 - Step 1: Click edit address button");
@@ -243,6 +253,8 @@ public class Customer_03_Add_And_Edit_Address extends BaseTest{
 
 	}
 	
+	@Description("Delete Address")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Customer_03_Delete_Address() {
 		log.info("Customer 03 - Step 1: Click delete address button");
@@ -253,9 +265,7 @@ public class Customer_03_Add_And_Edit_Address extends BaseTest{
 		
 		log.info("Customer 03 - Step 3: Verify no data avaiable in table text displays");
 		verifyEquals(customerPage.getNoAddressInTableMessage(), "No data available in table");
-		
 	}
-	
 
 	@AfterClass
 	public void afterClass() {

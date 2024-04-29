@@ -9,10 +9,14 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 
 import common.BaseTest;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import pageObject.user.PageGeneratorManager;
 import pageObject.user.UserHomePageObject;
 import pageObject.user.UserRegisterPageObject;
 
+@Epic("Regrestion Test")
+@Feature("Precondition for all test suites")
 public class Common_Register_NewAccount extends BaseTest{
 	private WebDriver driver;
 	private UserHomePageObject homePage;

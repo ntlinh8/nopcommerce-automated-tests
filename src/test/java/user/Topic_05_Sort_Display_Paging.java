@@ -7,10 +7,16 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import common.BaseTest;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import pageObject.user.PageGeneratorManager;
 import pageObject.user.UserHomePageObject;
 import pageObject.user.UserProductListPageObject;
-
+@Epic("Regrestion Test")
+@Feature("Sort and Paging")
 public class Topic_05_Sort_Display_Paging extends BaseTest{
 	WebDriver driver;
 	UserHomePageObject homePage;
@@ -32,6 +38,8 @@ public class Topic_05_Sort_Display_Paging extends BaseTest{
 		verifyEquals(productListPage.getCurrentPageTitle(driver), "Notebooks");
 	}
 	
+	@Description("Sort by name from A to Z")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Sort_01_Name_From_A_To_Z() throws Exception {
 		log.info("Sort 01 - Step 1: Select sort product by name: A to Z");
@@ -41,6 +49,8 @@ public class Topic_05_Sort_Display_Paging extends BaseTest{
 		verifyTrue(productListPage.isProductNameWasSortedByLabel("Name: A to Z"));
 	}
 	
+	@Description("Sort by name from Z to A")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Sort_02_Name_From_Z_To_A() throws Exception {
 		log.info("Sort 02 - Step 1: Select sort product by name: Z to A");
@@ -50,6 +60,8 @@ public class Topic_05_Sort_Display_Paging extends BaseTest{
 		verifyTrue(productListPage.isProductNameWasSortedByLabel("Name: Z to A"));
 	}
 	
+	@Description("Sort by price from Low to High")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Sort_03_Price_Low_To_High() throws Exception {
 		log.info("Sort 03 - Step 1: Select sort product by price: Low to High");
@@ -59,6 +71,8 @@ public class Topic_05_Sort_Display_Paging extends BaseTest{
 		verifyTrue(productListPage.isProductNameWasSortedByPrice("Price: Low to High"));
 	}
 	
+	@Description("Sort by price from High to Low")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Sort_04_Price_High_To_Low() throws Exception {
 		log.info("Sort 04 - Step 1: Select sort product by price: High to Low");
@@ -68,6 +82,8 @@ public class Topic_05_Sort_Display_Paging extends BaseTest{
 		verifyTrue(productListPage.isProductNameWasSortedByPrice("Price: High to Low"));
 	}
 	
+	@Description("Sort display with 3 items")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Sort_05_Display_With_3_Items() throws Exception {
 		log.info("Sort 05 - Step 1: Select mode display with 3 products");
@@ -92,6 +108,8 @@ public class Topic_05_Sort_Display_Paging extends BaseTest{
 		verifyTrue(productListPage.isPagingButtonDisplayByClass("previous-page"));
 	}
 	
+	@Description("Sort display with 6 items")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Sort_06_Display_With_6_Items(){
 		log.info("Sort 06 - Step 1: Select mode display with 6 products");
@@ -104,6 +122,8 @@ public class Topic_05_Sort_Display_Paging extends BaseTest{
 		verifyTrue(productListPage.isPagingButtonUndisplayed());
 	}
 	
+	@Description("Sort display with 9 items")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Sort_07_Display_With_9_Items() throws Exception {
 		log.info("Sort 7 - Step 1: Select mode display with 9 products");

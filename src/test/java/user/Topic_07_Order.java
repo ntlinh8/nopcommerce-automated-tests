@@ -8,6 +8,11 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import common.BaseTest;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import pageObject.user.PageGeneratorManager;
 import pageObject.user.UserCheckoutPageObject;
 import pageObject.user.UserConfirmOrderDetailPageObject;
@@ -18,7 +23,8 @@ import pageObject.user.UserOrderPageObject;
 import pageObject.user.UserProductDetailObject;
 import pageObject.user.UserProductListPageObject;
 import pageObject.user.UserShoppingCartPageObject;
-
+@Epic("Regrestion Test")
+@Feature("Order")
 public class Topic_07_Order extends BaseTest{
 	private WebDriver driver;
 	private UserHomePageObject homePage;
@@ -92,6 +98,8 @@ public class Topic_07_Order extends BaseTest{
 		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
 	}
 	
+	@Description("Add Product to Cart")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Order_01_Add_Product_To_Cart(){
 		log.info("Order 01 - Step 1: Hover on Coputer menu");
@@ -137,6 +145,8 @@ public class Topic_07_Order extends BaseTest{
 		verifyEquals(productDetailPage.getSubPrice(driver), subPrice1);
 	}
 	
+	@Description("Edit Product in Shopping cart")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Order_02_Edit_Product_In_Shopping_Cart(){
 		log.info("Order 02 - Step 1: Click to Shopping cart header link");
@@ -180,6 +190,8 @@ public class Topic_07_Order extends BaseTest{
 		verifyEquals(productDetailPage.getSubPrice(driver), subPrice2);
 	}
 	
+	@Description("Remove product in Shopping Cart")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Order_03_Remove_Product_In_Shopping_Cart(){
 		log.info("Order 03 - Step 1: Click to Shopping cart header link");
@@ -199,6 +211,8 @@ public class Topic_07_Order extends BaseTest{
 		verifyEquals(shoppingCartPage.getBodyTableData(driver, "page shopping-cart-page"), "Your Shopping Cart is empty!");
 	}
 	
+	@Description("Update Shopping Cart")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Order_04_Update_Shopping_Cart(){
 		log.info("Order 04 - Step 1: Hover on Coputer menu");
@@ -239,6 +253,8 @@ public class Topic_07_Order extends BaseTest{
 		verifyEquals(shoppingCartPage.getSubTotalPriceByProductName(lenovoPCName), "$2,500.00");
 	}
 	
+	@Description("Payment method by cheque")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Order_05_Payment_Method_By_Cheque(){
 		log.info("Order 05 - Step 1: Hover on Coputer menu");
@@ -401,6 +417,8 @@ public class Topic_07_Order extends BaseTest{
 		verifyEquals(orderPage.getRowOfCartTotalTableByClass("Order Total"), "$3,610.00");
 	}
 	
+	@Description("Payment method by cart")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Order_06_Payment_Method_By_Cart(){
 		log.info("Order 06 - Step 1: Hover on Coputer menu");
@@ -564,6 +582,8 @@ public class Topic_07_Order extends BaseTest{
 		verifyEquals(orderPage.getRowOfCartTotalTableByClass("Order Total"), "$1,510.00");
 	}
 	
+	@Description("Reorder product")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Order_07_ReOrder_Product(){
 		log.info("Order 07 - Step 1: Click re-order button");

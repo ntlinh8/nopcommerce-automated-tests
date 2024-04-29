@@ -7,11 +7,18 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import common.BaseTest;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import pageObject.admin.AdminDashboardPageObject;
 import pageObject.admin.AdminLoginPageObject;
 import pageObject.admin.AdminProductPageObject;
 import pageObject.admin.PageGeneratorManager;
 
+@Epic("Regrestion Test")
+@Feature("Product")
 public class Product extends BaseTest{
 	private static WebDriver driver;
 	private AdminLoginPageObject loginPage;
@@ -41,6 +48,8 @@ public class Product extends BaseTest{
 		verifyTrue(dashboardPage.isDashboardHeaderDisplayed());
 	}
 	
+	@Description("Search with Product name")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Product_01_Search_With_Product_Name() {
 		log.info("Product 01 - Step 1: Click to Catalog menu");
@@ -67,6 +76,8 @@ public class Product extends BaseTest{
 		verifyTrue(productPage.isPublishedProductByName(lenovoPC));
 	}
 	
+	@Description("Search with Product name and parent category and unchecked")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Product_02_Search_With_Product_Name_And_Parent_Category_And_Unchecked() {
 		log.info("Product 02 - Step 1: Send product name");
@@ -85,6 +96,8 @@ public class Product extends BaseTest{
 		verifyEquals(productPage.getNoItemMessage(), "No data available in table");
 	}
 	
+	@Description("Search with Product name and category and checked")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Product_03_Search_With_Product_Name_And_Parent_Category_And_Checked() {
 		log.info("Product 03 - Step 1: Send product name");
@@ -107,6 +120,8 @@ public class Product extends BaseTest{
 		verifyTrue(productPage.isPublishedProductByName(lenovoPC));
 	}
 	
+	@Description("Search with product name and child category and unchecked")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Product_04_Search_With_Product_Name_And_Child_Category_And_Unchecked() {
 		log.info("Product 04 - Step 1: Send product name");
@@ -129,6 +144,8 @@ public class Product extends BaseTest{
 		verifyTrue(productPage.isPublishedProductByName(lenovoPC));
 	}
 	
+	@Description("Search with product name and manufacturer")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Product_05_Search_With_Product_Name_And_Manufacturer() {
 		log.info("Product 05 - Step 1: Send product name");
@@ -150,6 +167,8 @@ public class Product extends BaseTest{
 		verifyEquals(productPage.getNoItemMessage(), "No data available in table");
 	}
 	
+	@Description("Go directly to product sku")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Product_06_Go_Directly_To_Product_Sku() {
 		log.info("Product 06 - Step 1: Send product name");

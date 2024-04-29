@@ -7,6 +7,11 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import common.BaseTest;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import pageObject.user.PageGeneratorManager;
 import pageObject.user.UserAddAddressesObject;
 import pageObject.user.UserAddProductReviewObject;
@@ -19,7 +24,8 @@ import pageObject.user.UserMyProductReviewObject;
 import pageObject.user.UserProductDetailObject;
 import pageObject.user.UserProductListPageObject;
 import pageObject.user.UserRegisterPageObject;
-
+@Epic("Regrestion Test")
+@Feature("My account funtions")
 public class Topic_03_My_Account extends BaseTest{
 	WebDriver driver;
 	UserHomePageObject homePage;
@@ -99,6 +105,8 @@ public class Topic_03_My_Account extends BaseTest{
 		log.info("=============================");
 	}
 	
+	@Description("Add Customer information")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void My_Account_01_Customer_Information() {
 		log.info("My Account 01 - Step 1: Click to My Account link");
@@ -129,6 +137,8 @@ public class Topic_03_My_Account extends BaseTest{
 		log.info("=============================");
 	}
 	
+	@Description("Add a new address")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void My_Account_02_Add_New_Addresses() {
 		log.info("My Account 02 - Step 1: Click to Addresses tab");
@@ -163,6 +173,8 @@ public class Topic_03_My_Account extends BaseTest{
 		log.info("=============================");
 	}
 	
+	@Description("Change password")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void My_Account_03_Change_Password() {
 		log.info("My Account 03 - Step 1: Click to Change password tab");
@@ -190,6 +202,8 @@ public class Topic_03_My_Account extends BaseTest{
 		log.info("=============================");
 	}
 	
+	@Description("Product Review")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void My_Account_04_Product_Review() {
 		log.info("My Account 04 - Step 1: Search Product By Product Title");

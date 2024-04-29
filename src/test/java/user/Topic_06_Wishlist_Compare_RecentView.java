@@ -8,6 +8,11 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import common.BaseTest;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import pageObject.user.PageGeneratorManager;
 import pageObject.user.UserCompareProduct;
 import pageObject.user.UserHomePageObject;
@@ -17,7 +22,8 @@ import pageObject.user.UserProductListPageObject;
 import pageObject.user.UserRecentlyViewedProductPageObject;
 import pageObject.user.UserShoppingCartPageObject;
 import pageObject.user.UserWishlistPageObject;
-
+@Epic("Regrestion Test")
+@Feature("WishList, Compare and RecentView")
 public class Topic_06_Wishlist_Compare_RecentView extends BaseTest{
 	WebDriver driver;
 	UserHomePageObject homePage;
@@ -69,6 +75,8 @@ public class Topic_06_Wishlist_Compare_RecentView extends BaseTest{
 		productDetailPage = productListPage.clickToProductTitle(driver, macbookAppleProduct);
 	}
 	
+	@Description("Add product to wish list")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void WishlistCompareRecent_01_Add_Product_To_Wishlist(){
 		log.info("WishlistCompareRecent 01 - Step 1: Click Add to wishlist button");
@@ -94,6 +102,8 @@ public class Topic_06_Wishlist_Compare_RecentView extends BaseTest{
 		verifyEquals(wishlistPage.getCurrentPageTitle(driver), "Wishlist of " + Common_Register_NewAccount.FIRSTNAME + " " + Common_Register_NewAccount.LASTNAME);
 	}
 	
+	@Description("Add product to cart from wish list")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void WishlistCompareRecent_02_Add_Product_To_Cart_From_Wishlist(){
 		log.info("WishlistCompareRecent 02 - Step 1: Back to my wishlist page");
@@ -123,6 +133,8 @@ public class Topic_06_Wishlist_Compare_RecentView extends BaseTest{
 		verifyTrue(shoppingCartPage.isProductNotExistInTableByProductName(driver, macbookAppleProduct));
 	}
 	
+	@Description("Remove product from wishlist")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void WishlistCompareRecent_03_Remove_Product_From_Wishlist(){
 		log.info("WishlistCompareRecent 03 - Step 1: Add product to Wishlist");
@@ -146,6 +158,8 @@ public class Topic_06_Wishlist_Compare_RecentView extends BaseTest{
 		verifyEquals(wishlistPage.getBodyTableData(driver, "page wishlist-page"), "The wishlist is empty!");
 	}
 	
+	@Description("Add product to compare")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void WishlistCompareRecent_04_Add_Product_To_Compare(){
 		log.info("WishlistCompareRecent 04 - Step 1: Go to product list page");
@@ -194,6 +208,8 @@ public class Topic_06_Wishlist_Compare_RecentView extends BaseTest{
 		verifyTrue(compareProductPage.isSheetTextUndisplayByRowClassAndColumnIndex("product-name", "2", asusLaptopProduct));
 	}
 	
+	@Description("Recently Viewed Product")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void WishlistCompareRecent_05_Recently_Viewed_Product(){
 		log.info("WishlistCompareRecent 05 - Step 1: Open Macbook detail page");

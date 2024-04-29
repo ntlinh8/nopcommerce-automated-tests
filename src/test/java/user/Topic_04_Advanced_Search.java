@@ -7,12 +7,19 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import common.BaseTest;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import pageObject.user.PageGeneratorManager;
 import pageObject.user.UserHomePageObject;
 import pageObject.user.UserLoginPageObject;
 import pageObject.user.UserRegisterPageObject;
 import pageObject.user.UserSearchPageObject;
 
+@Epic("Regrestion Test")
+@Feature("Advanced Search")
 public class Topic_04_Advanced_Search extends BaseTest{
 	WebDriver driver;
 	UserHomePageObject homePage;
@@ -48,6 +55,8 @@ public class Topic_04_Advanced_Search extends BaseTest{
 		searchPage = PageGeneratorManager.getUserSearchPage(driver);
 	}
 	
+	@Description("Search with empty data")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Search_01_Empty_Data() {
 		log.info("Search 01 - Step 1: Click To Search button");
@@ -58,6 +67,8 @@ public class Topic_04_Advanced_Search extends BaseTest{
 		log.info("=============================");
 	}
 	
+	@Description("Search with data not exist")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Search_02_Data_Not_Exist() {
 		homePage.openSearchPage();
@@ -73,7 +84,8 @@ public class Topic_04_Advanced_Search extends BaseTest{
 		log.info("=============================");
 	}
 	
-	
+	@Description("Search with relative product name")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Search_03_Relative_Product_Name() {
 		homePage.openSearchPage();
@@ -91,6 +103,8 @@ public class Topic_04_Advanced_Search extends BaseTest{
 		log.info("=============================");
 	}
 	
+	@Description("Search with absolute product name")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Search_04_Absolute_Product_Name() {
 		homePage.openSearchPage();
@@ -107,6 +121,8 @@ public class Topic_04_Advanced_Search extends BaseTest{
 		log.info("=============================");
 	}
 	
+	@Description("Search with advanced with parent categories")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Search_05_Advanced_With_Parent_Categories() {
 		homePage.openSearchPage();
@@ -131,6 +147,8 @@ public class Topic_04_Advanced_Search extends BaseTest{
 		log.info("=============================");
 	}
 	
+	@Description("Search Advanced with sub categories")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Search_06_Advanced_With_Sub_Categories() {
 		homePage.openSearchPage();
@@ -156,6 +174,8 @@ public class Topic_04_Advanced_Search extends BaseTest{
 		log.info("=============================");
 	}
 	
+	@Description("Search Advanced with incorrect manufacturer")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Search_07_Advanced_With_Incorrect_Manufacturer() {
 		homePage.openSearchPage();
@@ -183,6 +203,8 @@ public class Topic_04_Advanced_Search extends BaseTest{
 		log.info("=============================");
 	}
 	
+	@Description("Search Advanced with correct Manufacturer")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Search_08_Advanced_With_Correct_Manufacturer() {
 		homePage.openSearchPage();

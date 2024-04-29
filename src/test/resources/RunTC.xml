@@ -2,6 +2,10 @@
 <suite parallel="false" name="Run NopCommerce Website">
 <parameter name="servername" value="USER"/>
 
+<listeners>
+	<listener class-name="reportConfig.AllureTestListener" />
+</listeners>
+
 <test name="Run on CHROME">
   	<parameter name="browser" value="chrome"/>
     <classes>

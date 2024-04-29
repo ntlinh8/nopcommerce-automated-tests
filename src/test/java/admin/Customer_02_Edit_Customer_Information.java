@@ -7,11 +7,18 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import common.BaseTest;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import pageObject.admin.AdminCustomerPageObject;
 import pageObject.admin.AdminDashboardPageObject;
 import pageObject.admin.AdminLoginPageObject;
 import pageObject.admin.PageGeneratorManager;
 
+@Epic("Regrestion Test")
+@Feature("Edit Customer")
 public class Customer_02_Edit_Customer_Information extends BaseTest{
 	private static WebDriver driver;
 	private AdminLoginPageObject loginPage;
@@ -105,7 +112,8 @@ public class Customer_02_Edit_Customer_Information extends BaseTest{
 		verifyTrue(customerPage.isPageLoadedSuccess(driver));
 	}
 	
-	
+	@Description("Admin: Edit customer information")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Customer_01_Edit_Customer_Information() {
 		log.info("Edit Information 01 - Step 1: Search customer with company");

@@ -7,10 +7,17 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import common.BaseTest;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import pageObject.user.PageGeneratorManager;
 import pageObject.user.UserHomePageObject;
 import pageObject.user.UserRegisterPageObject;
 
+@Epic("Regrestion Test")
+@Feature("Register for user")
 public class Topic_01_Register extends BaseTest{
 	WebDriver driver;
 	UserHomePageObject homePage;
@@ -30,6 +37,8 @@ public class Topic_01_Register extends BaseTest{
 		confirmPassword = "Abc13579";
 	}
 
+	@Description("Register with empty data")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Register_01_Empty_Data() {
 		log.info("Register 01 - Step 1: Click to register link");
@@ -46,6 +55,8 @@ public class Topic_01_Register extends BaseTest{
 		verifyEquals(registerPage.getErrorMessageOfTextboxByID(driver, "ConfirmPassword-error"), "Password is required.");
 	}
 
+	@Description("Register with valid data")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Register_02_Invalid_Email() {
 		homePage.openRegisterPage();
@@ -60,6 +71,8 @@ public class Topic_01_Register extends BaseTest{
 		verifyEquals(registerPage.getErrorMessageOfTextboxByID(driver, "Email-error"), "Wrong email");
 	}
 	
+	@Description("Register with valid information")
+	@Severity(SeverityLevel.CRITICAL)
 	@Test
 	public void Register_03_Valid_Information() {
 		homePage.openRegisterPage();
@@ -81,6 +94,8 @@ public class Topic_01_Register extends BaseTest{
 		homePage = registerPage.clickToContinueButton();
 	}
 	
+	@Description("Register with exist email")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Register_04_Exist_Email() {
 		homePage.openRegisterPage();
@@ -102,6 +117,8 @@ public class Topic_01_Register extends BaseTest{
 		verifyEquals(registerPage.getExistEmailMessage(), "The specified email already exists");
 	}
 	
+	@Description("Register with password length less 6 charaters")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Register_05_Password_Length_Less_6() {
 		homePage.openRegisterPage();
@@ -120,6 +137,8 @@ public class Topic_01_Register extends BaseTest{
 		verifyEquals(registerPage.getErrorMessageOfTextboxByID(driver, "Password-error"), "Password must meet the following rules:\nmust have at least 6 characters");
 	}
 	
+	@Description("Register with confirm passwork not match password")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void Register_06_Confirm_Password_Not_Match_Password() {
 		homePage.openRegisterPage();
