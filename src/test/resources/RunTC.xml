@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite parallel="false" name="Run NopCommerce Website">
+<parameter name="servername" value="USER"/>
+
+<test name="Run on CHROME">
+  	<parameter name="browser" value="chrome"/>
+    <classes>
+      <class name="user.Topic_01_Register"/>
+    </classes>
+</test> 
+
+  
+</suite> 
+
