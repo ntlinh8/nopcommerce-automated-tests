@@ -26,9 +26,9 @@ This repository contains a suite of automated tests developed using a testing fr
 To set up the automated testing environment, follow these steps:
 
 1. **Clone the Repository**: Clone this repository to your local machine using the following command:
-
+```
 git clone https://github.com/ntlinh8/nopcommerce-automated-tests.git
-
+```
 2. **Install Dependencies**: Install the necessary dependencies for running the tests. This may include:
 - Testing frameworks (e.g., TestNG, AllureReport)
 - Selenium WebDriver
