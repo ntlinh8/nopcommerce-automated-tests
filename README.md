@@ -1,4 +1,4 @@
-# NopCommerce Automated Tests
+# NopCommerce Automated Tests (Split from https://github.com/ntlinh8/hybrid-framework-nopcommerce/)
 
 This repository contains automated tests for NopCommerce, an open-source e-commerce platform built with ASP.NET Core. These tests are designed to validate the functionality and performance of various features within NopCommerce.
 
