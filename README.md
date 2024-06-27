@@ -1,25 +1,52 @@
-# NopCommerce Automated Tests (Split from https://github.com/ntlinh8/hybrid-framework-nopcommerce/)
+# NopCommerce Automated Tests
 
-This repository contains automated tests for NopCommerce, an open-source e-commerce platform built with ASP.NET Core. These tests are designed to validate the functionality and performance of various features within NopCommerce.
+This project originated from my previous repository where I explored various design concepts. You can view the original project at https://github.com/ntlinh8/hybrid-framework-nopcommerce/.
 
 ## Table of Contents
 
 - [Introduction](#introduction)
 - [Setup](#setup)
+- [Techstacks Details](#techstacks-details)
 - [Running Tests](#running-tests)
-- [Contributing](#contributing)
-- [License](#license)
-
+  
 ## Introduction
 
-NopCommerce is a widely-used e-commerce solution that provides a flexible and customizable platform for building online stores. Automated tests play a crucial role in ensuring that the application functions as expected across different scenarios and environments.
+Powered by Java, Selenium with TestNG, and AllureReport, this project aims to validate functionalities including Signup, Login, Order, Search, and Sorting for https://demo.nopcommerce.com/
 
-This repository contains a suite of automated tests developed using a testing framework (e.g., Selenium, TestNG) to interact with the NopCommerce web application. These tests cover various aspects of the application, including:
+Techstacks used:
+- Page Object Model
+- Dynamic Locator
+- Custom reports
+- Fake data
 
-- User authentication and authorization
-- Product management
-- Shopping cart functionality
-- Checkout process
+## Techstacks Details:
+1. Page Object Model
+
+Why did I choose the Page Object Model instead of the Page Factory pattern?
+- With the large actions and locators for each page, merging them into one file is unfriendly to developers because the length of the file will be too long and will take many time to maintain (when scrolling up and down)
+- With the Page Factory pattern, the page object with elements will be inited when initing pages. But it will take a long time to find all the elements (including unnecessary elements for this case). After reloading pages, the page object and elements will be reloaded and it can cause the StaleElementException
+
+Analyze Page Object Model
+- BasePage.java: contains all wrapped methods of Selenium used for all projects. These methods are used in the page object classes
+- BaseTest.java: contains all methods used in TestClass (test case level). It consists of:
+  a getWebDriver method: support to get the appropriate driver for each browser, support to run in headless mode, and multiple environments
+  verifying methods: consist of verifyTrue(), verifyFalse(), verifyEqual() methods used to verify actions in test cases
+  if you want to run on the cloud platform (BrowserStack or SourceLab), it'll be set on this file
+- Interface folder: contains locators divided for each page. 
+- PageObject folder: contains page object classes. These classes inherit the BasePage and use these BasePage methods and the appropriate locators (in the Interface folder) to implement the specific actions for each page. In this folder, I have PageGeneratorManager to manage the definition of all classes.
+- TestScript: contains test classes. These classes inherit BaseTest and it's implemented by actions in PageObject classes
+
+2. Dynamic Locator
+Instead of using locators with the same template like
+//p[text()='Product']
+//p[text()='Desktop']
+I created the template locator: //p[text()='%s'] and injected the suitable label in the test case into this template to create the complete locator
+====
+This action is customed in these methods of BasePage and applied for the entire project
+
+3. Custom reports: using Allure Report customed for capture the screen before the failure occurs
+4. Fake data: Using FakerLibary to fake data
+(In addition, I can custom get data from Excel or JSON files)
 
 ## Setup
 
@@ -48,12 +75,3 @@ To execute the automated tests, follow these steps:
 
 3. **Review Test Results**: After the tests have completed execution, review the test results to identify any failures or issues encountered during the testing process.
 
-## Contributing
-
-Contributions to this repository are welcome! If you find any bugs, issues, or areas for improvement in the automated tests, feel free to submit a pull request with your changes. Please ensure that your contributions adhere to the existing coding standards and practices.
-
-If you're unsure about how to contribute, you can also open an issue to discuss potential enhancements or changes with the repository maintainers.
-
-## License
-
-This repository is licensed under the [MIT License](LICENSE), which allows for both personal and commercial use of the codebase. See the [LICENSE](LICENSE) file for more information.
