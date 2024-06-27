@@ -14,6 +14,7 @@ This project originated from my previous repository where I explored various des
 Powered by Java, Selenium with TestNG, and AllureReport, this project aims to validate functionalities including Signup, Login, Order, Search, and Sorting for https://demo.nopcommerce.com/
 
 Techstacks used:
+- Java, Maven with Selenium, TestNG, AllureReport libraries
 - Page Object Model
 - Dynamic Locator
 - Custom reports
