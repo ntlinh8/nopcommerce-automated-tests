@@ -5,8 +5,10 @@ This project originated from my previous repository where I explored various des
 ## Table of Contents
 
 - [Introduction](#introduction)
-- [Setup](#setup)
+- [Structure](#structure)
 - [Techstacks Details](#techstacks-details)
+- [Usage](#usage)
+- [Setup](#setup)
 - [Running Tests](#running-tests)
   
 ## Introduction
@@ -19,6 +21,10 @@ Techstacks used:
 - Dynamic Locator
 - Custom reports
 - Fake data
+
+<!-- ROADMAP -->
+## Structure
+![TemplateStructure](https://github.com/ntlinh8/TEMPLATE-AUTOMATED-PROJECT/blob/master/TemplateStructure.png)
 
 ## Techstacks Details:
 1. Page Object Model
@@ -48,6 +54,48 @@ This action is customed in these methods of BasePage and applied for the entire 
 3. Custom reports: using Allure Report customed for capture the screen before the failure occurs
 4. Fake data: Using FakerLibary to fake data
 (In addition, I can custom get data from Excel or JSON files)
+
+## Usage
+package com;
+
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
+
+import commons.BaseTest;
+import pageObjects.HomePO;
+import pageObjects.PageGeneratorManager;
+
+public class HomePage_001_MenuItems extends BaseTest{
+
+	WebDriver driver;
+	private HomePO homePage;
+	
+	@Parameters({"browser", "environment"})
+	@BeforeTest
+	public void beforeClass(String browserName, String environment) {
+		log.info("Start Before Test");
+		driver = getBrowserDriver(browserName, environment);
+		homePage = PageGeneratorManager.getHomePage(driver);
+		
+	}
+	
+	@Test
+	public void  MenuItems_001_AboutUs() {
+		log.info("Step 01: Click to Open Menu button");
+		homePage.clickToOpenMenuButton(driver);
+		
+		log.info("Step 02: Verify the title of pages");
+		verifyEquals(homePage.getPageTitle(driver), "Sytner Group: UK Prestige Car Dealerships");
+	}
+	
+	@AfterTest
+	public void afterClass() {
+		closeBrowserDriver();
+	}
+}
 
 ## Setup
 
